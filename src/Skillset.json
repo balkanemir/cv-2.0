@@ -1,0 +1,138 @@
+{
+  "PL": {
+    "items": [
+      {
+        "src": "./images/C++.png",
+        "name": "C++",
+        "description": "used in many courses in my university."
+      },
+      {
+        "src": "./images/python.png",
+        "name": "Python",
+        "description": " I am writing python almost for 4 years."
+      },
+      {
+        "src": "./images/dart.png",
+        "name": "Dart",
+        "description": "I used dart in my mobile application course."
+      },
+      {
+        "src": "./images/html.png",
+        "name": "HTML",
+        "description": "Everytime."
+      },
+      {
+        "src": "./images/css4.png",
+        "name": "CSS",
+        "description": "Of course."
+      },
+      {
+        "src": "./images/js.png",
+        "name": "JavaScript",
+        "description": "Part of my job, and my life."
+      }
+    ]
+  },
+  "FW": {
+    "items": [
+      {
+        "src": "./images/ajax.png",
+        "name": "AJAX",
+        "description": "I used ajax for a website i coded some time ago."
+      },
+      {
+        "src": "./images/react.png",
+        "name": "React",
+        "description": "I have many projects, including this website. just love it."
+      },
+      {
+        "src": "./images/vue.png",
+        "name": "VueJS",
+        "description": "Options api and composition api. Vue is my best friend. Don't tell to React."
+      },
+      {
+        "src": "./images/jquery.png",
+        "name": "Jquery",
+        "description": "Old but still useful sometimes. I use it if i have to."
+      },
+      {
+        "src": "./images/bootstrap.png",
+        "name": "Bootstrap",
+        "description": "Don't recommend, but i have to know as frontend developer."
+      },
+      {
+        "src": "./images/flask3.png",
+        "name": "Flask",
+        "description": "1 year work experience."
+      },
+      {
+        "src": "./images/flutter.png",
+        "name": "Flutter",
+        "description": " I used it in one course in my university. Obviously for mobile development."
+      }
+    ]
+  },
+  "Tech": {
+    "items": [
+      {
+        "src": "./images/vscode.webp",
+        "name": "VSCode",
+        "description": "I do not use anything else if vscode is there."
+      },
+      {
+        "src": "./images/xcode.webp",
+        "name": "Xcode",
+        "description": "As a mac user, I used it a lot to write C++ specifically."
+      },
+      {
+        "src": "./images/git.png",
+        "name": "Git",
+        "description": "I have 1 year experince in my job. i can say 7 out of 10."
+      },
+      {
+        "src": "./images/atom.png",
+        "name": "Atom",
+        "description": "My old friend."
+      },
+      {
+        "src": "./images/postman.png",
+        "name": "Postman",
+        "description": "It is very useful, i love it."
+      },
+      {
+        "src": "./images/docker.png",
+        "name": "Docker",
+        "description": "Put me in a little bit in trouble when i am learning, and still."
+      },
+      {
+        "src": "./images/mysql.png",
+        "name": "MySql",
+        "description": "I used it for my personal projects. But I am not a fan."
+      },
+      {
+        "src": "./images/postgres.png",
+        "name": "Postgresql",
+        "description": "I used it in my work a lot. I will just say, the best."
+      },
+      {
+        "src": "./images/mongodb2.png",
+        "name": "MongoDB",
+        "description": "Easy, practical, fast. Love it."
+      }
+    ]
+  },
+  "Lang": {
+    "items": [
+      {
+        "src": "./images/turkey.png",
+        "name": "Turkish",
+        "description": "My native language."
+      },
+      {
+        "src": "./images/us.png",
+        "name": "English",
+        "description": "My education is in english. C1."
+      }
+    ]
+  }
+}
