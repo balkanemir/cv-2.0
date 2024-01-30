@@ -4,6 +4,7 @@ import styled from "styled-components";
 import MindSet from "../components/MindSet";
 import Navbar from "../components/Navbar";
 import SkillSet from "../components/SkillSet";
+import Portfolio from "../components/Portfolio";
 
 const Container = styled.div`
   width: calc(100vw - 15px);
@@ -17,6 +18,7 @@ const Home = () => {
       <Intro />
       <MindSet />
       <SkillSet />
+      <Portfolio />
     </Container>
   );
 };

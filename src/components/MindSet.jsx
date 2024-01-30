@@ -160,7 +160,7 @@ const MindSet = () => {
         {aboutInView && (
           <>
             {" "}
-            <TitleLeft themeColor={themeColors[0]}>About.</TitleLeft>
+            <TitleLeft themeColor={themeColors[0]}>About me.</TitleLeft>
             <ContentContainer color={"gray"} delay={0.3}>
               Hi. I'm Emir, 23 years old. <br />
               UI/UX Designer, and Frontend Developer. <br />
