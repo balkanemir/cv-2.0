@@ -65,7 +65,8 @@ const SubContainer = styled.div`
 `;
 
 const ItemContainer = styled.div`
-  width: auto;
+  width: 200px;
+  border: 1px solid black;
   height: 100%;
   position: absolute;
   left: calc(100vw + 10%);
@@ -78,6 +79,7 @@ const ItemContainer = styled.div`
   transform: scale(0.5);
   animation-play-state: ${(props) => (props.stop ? "paused" : "running")};
   user-select: none;
+  display: flex;
   &:hover {
     filter: none;
     transform: scale(0.7);
@@ -98,7 +100,7 @@ const Item = styled.img`
 `;
 
 const ItemDescriptionContainer = styled.div`
-  width: ${(props) => (props.visible ? "100px" : "0")};
+  width: ${(props) => (props.visible ? "100px" : "100px")};
   height: auto;
   display: flex;
   flex-direction: column;
