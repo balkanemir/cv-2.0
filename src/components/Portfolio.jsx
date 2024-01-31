@@ -291,7 +291,14 @@ const Portfolio = () => {
                   >
                     <i className="bi bi-x-lg"></i>
                   </CloseButton>
-                  <video width="100%" height="auto" constrols autoPlay loop>
+                  <video
+                    width="100%"
+                    height="auto"
+                    constrols
+                    autoPlay
+                    loop
+                    webkit-playsinline
+                  >
                     <source src={project.video} type="video/mp4" />
                   </video>
                   <Overlay></Overlay>
