@@ -77,7 +77,6 @@ const ItemContainer = styled.div`
   transition: 0.5s all;
   transform: scale(0.5);
   animation-play-state: ${(props) => (props.stop ? "paused" : "running")};
-  display: flex;
   user-select: none;
   &:hover {
     filter: none;
