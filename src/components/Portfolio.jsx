@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import { useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
@@ -151,6 +151,7 @@ const Cover = styled.img`
   opacity: ${(props) => (!props.start ? "1" : props.isClicked ? "0" : "1")};
   transition: 0.5s all;
   border: none;
+  z-index: -1;
 `;
 
 const CoverName = styled.div`
@@ -223,6 +224,7 @@ const Portfolio = () => {
   const themeColors = useSelector((state) => state.theme.themeColors).split(
     ","
   );
+  const videoRef = useRef(null);
 
   const [ref, inView] = useInView({
     triggerOnce: false,
@@ -233,6 +235,26 @@ const Portfolio = () => {
     triggerOnce: false,
     threshold: 0.2,
   });
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (video) {
+      // Add event listener to the 'loadedmetadata' event
+      const onLoadedMetadata = () => {
+        // Set 'playsInline' attribute and start playing the video
+        video.setAttribute("playsinline", "playsinline");
+        video.play();
+      };
+
+      video.addEventListener("loadedmetadata", onLoadedMetadata);
+
+      // Clean up the event listener on component unmount
+      return () => {
+        video.removeEventListener("loadedmetadata", onLoadedMetadata);
+      };
+    }
+  }, []);
 
   const handleProjectClick = (idx) => {
     setIsClicked(idx);
@@ -297,7 +319,7 @@ const Portfolio = () => {
                     constrols
                     autoPlay
                     loop
-                    playsinline
+                    ref={videoRef}
                   >
                     <source src={project.video} type="video/mp4" />
                   </video>
