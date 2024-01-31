@@ -297,7 +297,7 @@ const Portfolio = () => {
                     constrols
                     autoPlay
                     loop
-                    webkit-playsinline
+                    playsinline
                   >
                     <source src={project.video} type="video/mp4" />
                   </video>
