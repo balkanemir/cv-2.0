@@ -57,13 +57,13 @@
     {
       "name": "Agricultural Website",
       "cover": "./images/projects/AgriculturalWebsite/cover.jpg",
-      "dates": "",
-      "demander": "",
-      "description": "",
+      "dates": "20 Jul 2023 - 25 Aug 2023",
+      "demander": "İrem Tarım LTC.",
+      "description": "It is an agricultural website to promote İrem Tarım which is a shop selling agricultural products in a small city in Turkey.",
       "screenshots": [],
       "video": "./videos/admin-page-data/admin-page-video.mp4",
-      "usedTechnologies": [],
-      "githubLink": "",
+      "usedTechnologies": "HTML, CSS, Javascript, ReactJS, Bootstrap Icons",
+      "githubLink": "click here.",
       "websiteLink": ""
     },
     {
@@ -91,7 +91,7 @@
       "websiteLink": "Not Available."
     },
     {
-      "name": "Circumstation Guide (UI)",
+      "name": "Circumnavigate Guide (UI)",
       "cover": "./images/projects/SailUI/cover.jpg",
       "dates": "",
       "demander": "",

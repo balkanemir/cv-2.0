@@ -136,6 +136,10 @@ const Project = styled.div`
     !props.start ? "none" : props.isClicked ? "none" : "blur(5px)"};
   cursor: pointer;
   overflow-y: auto;
+  @media (max-width: 650px) {
+    width: ${(props) => (props.isClicked ? "100%" : `450px`)};
+    height: ${(props) => (props.isClicked ? "100%" : "100%")};
+  }
 `;
 
 const Cover = styled.img`
@@ -193,7 +197,7 @@ const InfoContainer = styled.div`
   font-family: "Futura";
   font-weight: 700;
   font-size: 10px;
-  padding-left: 20px;
+  padding: 0 20px 0 20px;
   box-sizing: border-box;
   line-height: 20px;
   transform: translateY(-50%);
@@ -238,6 +242,10 @@ const Portfolio = () => {
   const handleProjectHover = (hover) => {
     setIsHovered(hover);
   };
+
+  useEffect(() => {
+    setIsClicked(null);
+  }, [inView]);
 
   return (
     <Container ref={ref}>
@@ -319,7 +327,6 @@ const Portfolio = () => {
                         Screenshoots
                       </b>
                     )}
-
                     {project.screenshots.map((screenshot) => (
                       <ScreenShoot src={screenshot} />
                     ))}
