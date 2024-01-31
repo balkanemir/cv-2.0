@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
@@ -105,40 +105,45 @@ const ProjectsContainer = styled.div`
 `;
 
 const Project = styled.div`
-  width: ${(props) => (props.isClicked ? "60%" : `450px`)};
-  height: ${(props) => (props.isClicked ? "80%" : "100%")};
+  width: 450px;
+  height: 100%;
   background-color: white;
-  position: ${(props) => (props.isClicked ? "fixed" : "absolute")};
-  top: ${(props) => (props.isClicked ? "50%" : "0")};
+  position: absolute;
+  top: 0;
   left: ${(props) =>
-    props.isClicked
-      ? "50%"
+    props.projectClicked
+      ? `calc(${props.index} * 150px)`
       : props.slide
-      ? props.start
-        ? `calc(${props.index} * 150px)`
-        : `calc(${props.index} * 170px)`
+      ? `calc(${props.index} * 170px)`
       : `calc(${props.index} * 150px)`};
   transform: ${(props) =>
-    props.isClicked
-      ? "rotate(0) scale(1) translate(-50%, -50%)"
-      : props.isHovered
+    props.isHovered
       ? "rotate(0) scale(0.9)"
       : "perspective(1500px) rotateY(60deg) scale(0.7)"};
   transition: all 0.5s;
   animation: ${SlideAnimation} 1s ease;
-  z-index: ${(props) =>
-    props.isClicked ? "99" : props.isHovered ? "99" : props.index};
-  pointer-events: ${(props) =>
-    props.start ? (props.isClicked ? "auto" : "none") : "auto"};
-  box-shadow: ${(props) =>
-    !props.start ? "none" : props.isClicked ? "0 0 5px 1px lightgray" : "none"};
-  filter: ${(props) =>
-    !props.start ? "none" : props.isClicked ? "none" : "blur(5px)"};
+  pointer-events: ${(props) => (props.projectClicked ? "none" : "auto")};
+  z-index: ${(props) => (props.isHovered ? "99" : props.index)};
   cursor: pointer;
   overflow-y: auto;
+`;
+
+const DetailedProjectContainer = styled.div`
+  width: 70vw;
+  height: 80vh;
+  position: fixed;
+  top: 10vh;
+  left: 15vw;
+  background-color: white;
+  box-shadow: 0 0 5px 1px lightgray;
+  overflow-y: auto;
+  z-index: 99;
+  animation: ${FadeInAnimation} 0.5s ease;
   @media (max-width: 650px) {
-    width: ${(props) => (props.isClicked ? "100%" : `450px`)};
-    height: ${(props) => (props.isClicked ? "100%" : "100%")};
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
   }
 `;
 
@@ -148,8 +153,6 @@ const Cover = styled.img`
   position: absolute;
   top: 0;
   left: 0;
-  opacity: ${(props) => (!props.start ? "1" : props.isClicked ? "0" : "1")};
-  transition: 0.5s all;
   border: none;
   z-index: -1;
 `;
@@ -219,12 +222,11 @@ const ScreenShoot = styled.img`
 `;
 
 const Portfolio = () => {
-  const [isClicked, setIsClicked] = useState(null);
   const [isHovered, setIsHovered] = useState(ProjectsData.projects.length);
   const themeColors = useSelector((state) => state.theme.themeColors).split(
     ","
   );
-  const videoRef = useRef(null);
+  const [project, setProject] = useState(null);
 
   const [ref, inView] = useInView({
     triggerOnce: false,
@@ -236,38 +238,14 @@ const Portfolio = () => {
     threshold: 0.2,
   });
 
-  useEffect(() => {
-    const video = videoRef.current;
-
-    if (video) {
-      // Add event listener to the 'loadedmetadata' event
-      const onLoadedMetadata = () => {
-        // Set 'playsInline' attribute and start playing the video
-        video.setAttribute("playsinline", "playsinline");
-        video.play();
-      };
-
-      video.addEventListener("loadedmetadata", onLoadedMetadata);
-
-      // Clean up the event listener on component unmount
-      return () => {
-        video.removeEventListener("loadedmetadata", onLoadedMetadata);
-      };
-    }
-  }, []);
-
-  const handleProjectClick = (idx) => {
-    setIsClicked(idx);
+  const handleProjectClick = (project) => {
+    setProject(project);
     setIsHovered(ProjectsData.projects.length);
   };
 
   const handleProjectHover = (hover) => {
     setIsHovered(hover);
   };
-
-  useEffect(() => {
-    setIsClicked(null);
-  }, [inView]);
 
   return (
     <Container ref={ref}>
@@ -280,98 +258,85 @@ const Portfolio = () => {
         )}
       </SubContainer>
 
-      <ProjectsContainer
-        length={ProjectsData.projects.length}
-        isClicked={isClicked}
-        ref={projectRef}
-      >
+      <ProjectsContainer length={ProjectsData.projects.length} ref={projectRef}>
         {projectInView &&
-          ProjectsData.projects.map((project, idx) => (
+          ProjectsData.projects.map((item, idx) => (
             <Project
-              onClick={() => {
-                if (!isClicked && isClicked !== 0) {
-                  handleProjectClick(idx);
-                }
-              }}
-              key={idx}
-              index={idx}
-              length={ProjectsData.projects.length}
-              start={isClicked !== null}
-              isClicked={isClicked === idx}
+              onClick={() => handleProjectClick(item)}
               onMouseEnter={() => handleProjectHover(idx)}
               onMouseLeave={() =>
                 handleProjectHover(ProjectsData.projects.length)
               }
+              key={idx}
+              index={idx}
               isHovered={isHovered === idx}
               slide={idx > isHovered}
+              projectClicked={project}
             >
-              {isClicked === idx && (
-                <>
-                  <CloseButton
-                    onClick={() => handleProjectClick(null)}
-                    color={themeColors[5]}
-                  >
-                    <i className="bi bi-x-lg"></i>
-                  </CloseButton>
-                  <video
-                    width="100%"
-                    height="auto"
-                    constrols
-                    autoPlay
-                    loop
-                    ref={videoRef}
-                  >
-                    <source src={project.video} type="video/mp4" />
-                  </video>
-                  <Overlay></Overlay>
-                  <InfoContainer>
-                    <b style={{ color: themeColors[0], fontSize: "20px" }}>
-                      {project.name}
-                    </b>{" "}
-                    <br />
-                    <b style={{ color: themeColors[0] }}>Dates:</b>{" "}
-                    {project.dates} <br />
-                    <b style={{ color: themeColors[0] }}>Demander:</b>{" "}
-                    {project.demander} <br />
-                    <b style={{ color: themeColors[0] }}>Description:</b>{" "}
-                    {project.description} <br />
-                    <b style={{ color: themeColors[0] }}>
-                      Technologies & Libraries:
-                    </b>{" "}
-                    {project.usedTechnologies} <br />
-                    <b style={{ color: themeColors[0] }}>Github Link:</b>{" "}
-                    {project.githubLink} <br />
-                    <b style={{ color: themeColors[0] }}>Website Link:</b>{" "}
-                    {project.websiteLink} <br />
-                  </InfoContainer>
-                  <ScreenShootContainer>
-                    {project.screenshots.length !== 0 && (
-                      <b
-                        style={{
-                          color: themeColors[0],
-                          fontSize: "16px",
-                          marginLeft: "20px",
-                        }}
-                      >
-                        Screenshoots
-                      </b>
-                    )}
-                    {project.screenshots.map((screenshot) => (
-                      <ScreenShoot src={screenshot} />
-                    ))}
-                  </ScreenShootContainer>
-                </>
-              )}
-
-              <Cover
-                start={isClicked !== null}
-                isClicked={isClicked === idx}
-                src={project.cover}
-              />
-              {isClicked !== idx && <CoverName>{project.name}</CoverName>}
+              <Cover src={item.cover} />
+              <CoverName>{item.name}</CoverName>
             </Project>
           ))}
       </ProjectsContainer>
+      {project && (
+        <>
+          <DetailedProjectContainer>
+            <CloseButton
+              onClick={() => handleProjectClick(null)}
+              color={themeColors[5]}
+            >
+              <i className="bi bi-x-lg"></i>
+            </CloseButton>
+            <video
+              width="100%"
+              height="auto"
+              constrols
+              autoPlay
+              loop
+              playsinline
+            >
+              <source src={project.video} type="video/mp4" />
+            </video>
+            <Overlay></Overlay>
+            <InfoContainer>
+              <b style={{ color: themeColors[0], fontSize: "20px" }}>
+                {project.name}
+              </b>{" "}
+              <br />
+              <b style={{ color: themeColors[0] }}>Dates:</b> {project.dates}{" "}
+              <br />
+              <b style={{ color: themeColors[0] }}>Demander:</b>{" "}
+              {project.demander} <br />
+              <b style={{ color: themeColors[0] }}>Description:</b>{" "}
+              {project.description} <br />
+              <b style={{ color: themeColors[0] }}>
+                Technologies & Libraries:
+              </b>{" "}
+              {project.usedTechnologies} <br />
+              <b style={{ color: themeColors[0] }}>Github Link:</b>{" "}
+              {project.githubLink} <br />
+              <b style={{ color: themeColors[0] }}>Website Link:</b>{" "}
+              {project.websiteLink} <br />
+            </InfoContainer>
+            <ScreenShootContainer>
+              {project.screenshots.length !== 0 && (
+                <b
+                  style={{
+                    color: themeColors[0],
+                    fontSize: "16px",
+                    marginLeft: "20px",
+                  }}
+                >
+                  Screenshoots
+                </b>
+              )}
+              {project.screenshots.map((screenshot) => (
+                <ScreenShoot src={screenshot} />
+              ))}
+            </ScreenShootContainer>
+          </DetailedProjectContainer>
+        </>
+      )}
     </Container>
   );
 };
