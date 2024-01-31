@@ -66,7 +66,6 @@ const SubContainer = styled.div`
 
 const ItemContainer = styled.div`
   width: 200px;
-  border: 1px solid black;
   height: 100%;
   position: absolute;
   left: calc(100vw + 10%);
