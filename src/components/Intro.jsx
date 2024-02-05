@@ -46,6 +46,21 @@ const scaleAnimaiton = keyframes`
 }
 `;
 
+const jumpAnimation = keyframes`
+  0% {
+    transform: translate(-50%, 0);
+  }
+  30% {
+    transform: translate(-50%, 0);
+  }
+  65% {
+    transform: translate(-50%, 10px);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+`;
+
 const Container = styled.div`
   width: calc(100vw - 15px);
   height: 100vh;
@@ -144,14 +159,41 @@ const ThemeButton = styled.button`
   }
 `;
 
+const ScrollInfo = styled.div`
+  width: 200px;
+  height: 75px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  animation: ${jumpAnimation} 2s ease infinite;
+`;
+
+const ScrollInfoTitle = styled.div`
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 12px;
+`;
+
+const ArrowDown = styled.div`
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
 const Intro = () => {
   const [scrollY, setScrollY] = useState(0);
   const [index, setIndex] = useState(0);
   const themeColors = useSelector((state) => state.theme.themeColors);
   const responsiveValues = useSelector((state) => state.theme.responsiveValues);
   const dispatch = useDispatch();
-
-  console.log(responsiveValues);
 
   const handleScroll = () => {
     setScrollY(window.scrollY);
@@ -178,6 +220,16 @@ const Intro = () => {
 
   return (
     <Container>
+      <ScrollInfo
+        style={{
+          opacity: `calc(1 - ${scrollY / 200}`,
+        }}
+      >
+        <ScrollInfoTitle>Scroll Down</ScrollInfoTitle>
+        <ArrowDown>
+          <i class="bi bi-chevron-double-down"></i>
+        </ArrowDown>
+      </ScrollInfo>
       <IntroContainer>
         {index === 0 && (
           <Title

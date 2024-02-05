@@ -27,6 +27,24 @@ const FadeInAnimationSmallScreen = keyframes`
   }
 `;
 
+const GradientAnimation = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 50% 0%;
+  }
+  75% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`;
+
 const Container = styled.div`
   width: calc(100vw - 15px);
   height: 100vh;
@@ -56,9 +74,11 @@ const About = styled.div`
 const Mindset = styled.div`
   min-width: 50vw;
   height: 100vh;
-  background-color: ${(props) => props.themeColor};
+  background: ${(props) => `-webkit-radial-gradient(${props.theme})`};
+  background-size: 300% 300%;
   box-sizing: border-box;
   position: relative;
+  animation: ${GradientAnimation} 60s linear infinite;
 `;
 
 const TitleLeft = styled.div`
@@ -186,7 +206,7 @@ const MindSet = () => {
           width:
             window.innerWidth < 650 ? "100vw" : `calc(100vw - ${scrollY}px)`,
         }}
-        themeColor={themeColors[0]}
+        theme={themeColors}
       >
         {mindsetInView && (
           <>

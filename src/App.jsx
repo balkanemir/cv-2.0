@@ -6,7 +6,7 @@ import {
   changeTheme,
   setResponsiveValues,
 } from "../src/store/Slices/themeSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {

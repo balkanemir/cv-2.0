@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import ProjectsData from "../Projects.json";
+import { setProject } from "../store/Slices/themeSlice";
 
 const FadeInAnimation = keyframes`
   from {
@@ -175,7 +176,8 @@ const CloseButton = styled.button`
   height: 40px;
   border: 1px solid;
   border-color: ${(props) => props.color};
-  color: ${(props) => props.color};
+  background-color: ${(props) => props.color};
+  color: white;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -184,7 +186,11 @@ const CloseButton = styled.button`
   justify-content: center;
   cursor: pointer;
   z-index: 3;
-  background-color: transparent;
+  opacity: 0.5;
+  transition: 0.2s all;
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 const Overlay = styled.div`
@@ -221,12 +227,43 @@ const ScreenShoot = styled.img`
   margin: 20px 0 20px 0;
 `;
 
+const ButtonsContainer = styled.div`
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 30px;
+`;
+
+const DirectButton = styled.a`
+  width: 150px;
+  height: 30px;
+  border: 1px solid black;
+  margin: 5px 10px 5px 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-decoration: none;
+  padding: 5px;
+  background-color: ${(props) => props.color};
+  border: 2px solid;
+  border-color: ${(props) => props.color};
+  color: white;
+  transition: 0.2s all;
+  &:hover {
+    color: ${(props) => props.color};
+    background-color: white;
+    border: 2px solid;
+    border-color: ${(props) => props.color};
+  }
+`;
+
 const Portfolio = () => {
   const [isHovered, setIsHovered] = useState(ProjectsData.projects.length);
   const themeColors = useSelector((state) => state.theme.themeColors).split(
     ","
   );
-  const [project, setProject] = useState(null);
+  const project = useSelector((state) => state.theme.project);
+  const dispatch = useDispatch();
 
   const [ref, inView] = useInView({
     triggerOnce: false,
@@ -238,9 +275,14 @@ const Portfolio = () => {
     threshold: 0.2,
   });
 
-  const handleProjectClick = (project) => {
-    setProject(project);
+  const handleProjectClick = (item) => {
+    dispatch(setProject(item));
     setIsHovered(ProjectsData.projects.length);
+    if (item) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
   };
 
   const handleProjectHover = (hover) => {
@@ -287,16 +329,30 @@ const Portfolio = () => {
             >
               <i className="bi bi-x-lg"></i>
             </CloseButton>
-            <video
-              width="100%"
-              height="auto"
-              constrols
-              autoPlay
-              loop
-              playsinline
-            >
-              <source src={project.video} type="video/mp4" />
-            </video>
+            {project.video ? (
+              <video
+                width="100%"
+                height="auto"
+                constrols
+                autoPlay
+                loop
+                playsinline
+              >
+                <source src={project.video} type="video/mp4" />
+              </video>
+            ) : (
+              <div
+                style={{
+                  height: "100px",
+                  textAlign: "center",
+                  lineHeight: "100px",
+                  fontSize: "14px",
+                }}
+              >
+                Video is not provided.
+              </div>
+            )}
+
             <Overlay></Overlay>
             <InfoContainer>
               <b style={{ color: themeColors[0], fontSize: "20px" }}>
@@ -313,10 +369,34 @@ const Portfolio = () => {
                 Technologies & Libraries:
               </b>{" "}
               {project.usedTechnologies} <br />
-              <b style={{ color: themeColors[0] }}>Github Link:</b>{" "}
-              {project.githubLink} <br />
-              <b style={{ color: themeColors[0] }}>Website Link:</b>{" "}
-              {project.websiteLink} <br />
+              <ButtonsContainer>
+                {" "}
+                {project.githubLink && (
+                  <DirectButton
+                    href={project.githubLink}
+                    target="blank"
+                    color="black"
+                  >
+                    Go to Repository{" "}
+                    <i class="bi bi-github" style={{ fontSize: "20px" }}></i>
+                  </DirectButton>
+                )}
+                <br />
+                {project.websiteLink && (
+                  <DirectButton
+                    href={project.websiteLink}
+                    target="blank"
+                    color={themeColors[5]}
+                  >
+                    Go to Website{" "}
+                    <i
+                      class="bi bi-box-arrow-up-right"
+                      style={{ fontSize: "20px" }}
+                    ></i>
+                  </DirectButton>
+                )}
+              </ButtonsContainer>
+              <br />
             </InfoContainer>
             <ScreenShootContainer>
               {project.screenshots.length !== 0 && (
