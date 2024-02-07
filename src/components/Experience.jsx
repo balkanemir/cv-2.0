@@ -243,9 +243,6 @@ const GridTitle = styled.div`
   transform: translateX(-50%);
   font-weight: 700;
   font-family: "Futura";
-  @media (max-width: 650px) {
-    bottom: 20px;
-  }
 `;
 
 const DateContainer = styled.div`

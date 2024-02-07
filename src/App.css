@@ -13,6 +13,10 @@
   }
 }
 
+body {
+  background-color: white;
+}
+
 body::-webkit-scrollbar {
   display: none;
 }
