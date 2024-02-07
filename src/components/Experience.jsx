@@ -123,13 +123,11 @@ const Card = styled.div`
   height: 200px;
   margin: 10px;
   box-shadow: 0 0 10px 2px lightgray;
-  animation: ${ShakingAnimation} 20s linear infinite;
+  animation: ${ShakingAnimation} 10s linear infinite;
   animation-delay: ${(props) => props.delay * 3}s;
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
   cursor: pointer;
-  opacity: 0;
-  animation: ${FadeInAnimation} 1s ease forwards;
   transition: 0.2s all;
   &:hover {
     box-shadow: 0 0 20px 4px gray;
@@ -236,13 +234,15 @@ const NameDetailed = styled.div`
 
 const GridTitle = styled.div`
   font-size: 14px;
-  font-family: "Montserrat";
   position: absolute;
   left: 50%;
   bottom: 10px;
   transform: translateX(-50%);
   font-weight: 700;
   font-family: "Futura";
+  color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.color};
+  padding: 2px 5px 2px 5px;
 `;
 
 const DateContainer = styled.div`
@@ -410,6 +410,21 @@ const BackButton = styled.button`
   }
 `;
 
+const LinkedinLogo = styled.a`
+  width: auto;
+  height: auto;
+  font-size: 20px;
+  font-family: "Montserrat";
+  margin-top: 10px;
+  color: ${(props) => props.color};
+  opacity: 0;
+  animation: ${FadeInAnimation} 1s ease forwards;
+  background-color: transparent;
+  animation-delay: 0.5s;
+  z-index: 3;
+  cursor: pointer;
+`;
+
 const Experience = () => {
   const [isClicked, setIsClicked] = useState(null);
 
@@ -503,37 +518,79 @@ const Experience = () => {
             <NameDetailed color={isClicked.color}>
               {isClicked.name}
             </NameDetailed>
+            <LinkedinLogo
+              color={isClicked.color}
+              href={isClicked.linkedin}
+              target="blank"
+            >
+              <i class="bi bi-linkedin"></i>
+            </LinkedinLogo>
           </TopContainer>
           <InfoContainer color={isClicked.color}>
             <DateContainer>
               <Date>
                 {isClicked.startDate} <br /> {isClicked.endDate}
               </Date>
-              <GridTitle>Dates</GridTitle>
+              <GridTitle
+                color={isClicked.color}
+                backgroundColor={isClicked.backgroundColor}
+              >
+                Dates
+              </GridTitle>
             </DateContainer>
             <DaysContainer>
               <Days>{days}</Days>
-              <GridTitle>Day Spent</GridTitle>
+              <GridTitle
+                color={isClicked.color}
+                backgroundColor={isClicked.backgroundColor}
+              >
+                Day Spent
+              </GridTitle>
             </DaysContainer>
             <TypeContainer>
               <Type>{isClicked.type}</Type>
-              <GridTitle>Work Type</GridTitle>
+              <GridTitle
+                color={isClicked.color}
+                backgroundColor={isClicked.backgroundColor}
+              >
+                Work Type
+              </GridTitle>
             </TypeContainer>
             <RoleContainer>
               <RoleDetailed>{isClicked.roles}</RoleDetailed>
-              <GridTitle>Role</GridTitle>
+              <GridTitle
+                color={isClicked.color}
+                backgroundColor={isClicked.backgroundColor}
+              >
+                Role
+              </GridTitle>
             </RoleContainer>
             <ResponsibitiesContainer>
               <Responsibities>{isClicked.responsibilities}</Responsibities>
-              <GridTitle>Keywords</GridTitle>
+              <GridTitle
+                color={isClicked.color}
+                backgroundColor={isClicked.backgroundColor}
+              >
+                Keywords
+              </GridTitle>
             </ResponsibitiesContainer>
             <LocationContainer>
               <Location>{isClicked.location}</Location>
-              <GridTitle>Location</GridTitle>
+              <GridTitle
+                color={isClicked.color}
+                backgroundColor={isClicked.backgroundColor}
+              >
+                Location
+              </GridTitle>
             </LocationContainer>
             <ContributionContainer>
               <Contribution>{isClicked.projectsContributed}</Contribution>
-              <GridTitle>Projects</GridTitle>
+              <GridTitle
+                color={isClicked.color}
+                backgroundColor={isClicked.backgroundColor}
+              >
+                Projects
+              </GridTitle>
             </ContributionContainer>
           </InfoContainer>
         </>
