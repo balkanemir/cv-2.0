@@ -103,6 +103,9 @@ const ProjectsContainer = styled.div`
   display: flex;
   position: relative;
   overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const Project = styled.div`
@@ -124,7 +127,7 @@ const Project = styled.div`
   transition: all 0.5s;
   animation: ${SlideAnimation} 1s ease;
   pointer-events: ${(props) => (props.projectClicked ? "none" : "auto")};
-  z-index: ${(props) => (props.isHovered ? "99" : props.index)};
+  z-index: ${(props) => (props.isHovered ? "10" : props.index)};
   cursor: pointer;
   overflow-y: auto;
 `;
@@ -249,6 +252,7 @@ const DirectButton = styled.a`
   border-color: ${(props) => props.color};
   color: white;
   transition: 0.2s all;
+  font-family: "Futura";
   &:hover {
     color: ${(props) => props.color};
     background-color: white;
@@ -271,7 +275,7 @@ const Portfolio = () => {
   });
 
   const [projectRef, projectInView] = useInView({
-    triggerOnce: false,
+    triggerOnce: true,
     threshold: 0.2,
   });
 
@@ -386,7 +390,7 @@ const Portfolio = () => {
                   <DirectButton
                     href={project.websiteLink}
                     target="blank"
-                    color={themeColors[5]}
+                    color={themeColors[3]}
                   >
                     Go to Website{" "}
                     <i

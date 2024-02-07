@@ -91,7 +91,7 @@ const Title = styled.div`
   font-weight: 700;
   animation: ${GradientAnimation} 30s linear infinite,
     ${FadeInAnimation} 1s ease;
-  z-index: 3;
+  z-index: 100;
 `;
 
 const SubTitle = styled.div`

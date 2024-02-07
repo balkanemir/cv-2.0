@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 
 const Container = styled.div`
-  width: calc(100vw - 40px);
+  width: calc(100vw - 20px);
   height: 40px;
   background-color: #ffffff56;
   position: fixed;
   top: 10px;
   left: 10px;
-  z-index: 2;
+  z-index: 99;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,6 +39,9 @@ const Button = styled.button`
   cursor: pointer;
   @media (max-width: 1050px) {
     font-size: 12px;
+  }
+  @media (max-width: 650px) {
+    display: none;
   }
 `;
 

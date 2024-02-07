@@ -94,7 +94,7 @@ const TitleLeft = styled.div`
   @media (max-width: 1050px) {
     left: 50%;
     animation: ${FadeInAnimationSmallScreen} ease forwards 1s;
-    font-size: 42px;
+    font-size: 32px;
   }
 `;
 

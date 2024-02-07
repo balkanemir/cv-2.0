@@ -1,0 +1,36 @@
+{
+  "companies": [
+    {
+      "name": "Nobel Ilac A.Ş.",
+      "logo": "./images/nobellogo.png",
+      "location": "Istanbul, Turkey",
+      "color": "#1824A7",
+      "backgroundColor": "white",
+      "startDate": "1 Jul 2022",
+      "endDate": "15 Aug 2022",
+      "type": "On-site",
+      "daySpent": "45",
+      "roles": "Information Technologies Intern",
+      "responsibilities": "SQL and basic command writing.",
+      "linkedin": "",
+      "website": "",
+      "projectsContributed": "1"
+    },
+    {
+      "name": "MYTH AI INC.",
+      "logo": "./images/mythlogo.svg",
+      "location": "Istanbul, Turkey",
+      "color": "white",
+      "backgroundColor": "black",
+      "startDate": "2 Feb 2023",
+      "endDate": "1 Jan 2024",
+      "type": "Remote",
+      "daySpent": "334",
+      "roles": "Intern & Junior Frontend Developer",
+      "responsibilities": "HTML, CSS, JS, VueJS, ReactJS with Redux, UI/UX Principles, SOTA image classification models, Web Scrapping, Pytorch and its applications",
+      "linkedin": "",
+      "website": "",
+      "projectsContributed": "5"
+    }
+  ]
+}
