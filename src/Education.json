@@ -1,0 +1,52 @@
+{
+  "universities": [
+    {
+      "name": "Sabancı University",
+      "logo": "./images/sabancı.png",
+      "location": "Istanbul, Turkey",
+      "color": "white",
+      "backgroundColor": "#004288",
+      "date": "10 Sep 2019 - 10 Jun 2024 (expected)",
+      "major": "Computer Science & Engineering",
+      "rank": "https://www.timeshighereducation.com/world-university-rankings/sabanci-university",
+      "website": "https://www.sabanciuniv.edu/en",
+      "courses": [
+        "Introduction to Computing",
+        "Advanced Programming",
+        "Introduction to Data Science",
+        "Data Structures",
+        "Algorithms",
+        "Logic&Digital System Design",
+        "Programming Languages",
+        "Database Systems",
+        "Software Engineering",
+        "Mobile Application Development",
+        "Computer Networks",
+        "Cryptography",
+        "Machine Learning",
+        "Operating Systems",
+        "Cloud Computing",
+        "Human Computer Interaction"
+      ],
+      "degree": "Bachelor's Degree"
+    },
+    {
+      "name": "Sungkyunkwan University",
+      "logo": "./images/sungkyunkwan.png",
+      "location": "South Korea, Seoul",
+      "color": "white",
+      "backgroundColor": "#81BD21",
+      "date": "24 Aug 2022 - 10 Jan 2023",
+      "major": "Computer Science",
+      "rank": "https://www.timeshighereducation.com/world-university-rankings/sungkyunkwan-university-skku",
+      "website": "https://www.skku.edu/eng/index.do",
+      "courses": [
+        "Algorithms",
+        "Web Programming with HTML, CSS, and JS",
+        "UI/UX Design",
+        "Software Engineering"
+      ],
+      "degree": "Exchange Program"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 import SkillSet from "../components/SkillSet";
 import Portfolio from "../components/Portfolio";
 import Experience from "../components/Experience";
+import Education from "../components/Education";
 
 const Container = styled.div`
   width: calc(100vw);
@@ -21,6 +22,7 @@ const Home = () => {
       <SkillSet />
       <Portfolio />
       <Experience />
+      <Education />
     </Container>
   );
 };

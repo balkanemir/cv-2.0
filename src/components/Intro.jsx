@@ -321,7 +321,7 @@ const Intro = () => {
             }}
             theme={themeColors}
           >
-            A Frontend Developer.
+            I am a Software Developer.
           </SubTitle>
         )}
       </IntroContainer>

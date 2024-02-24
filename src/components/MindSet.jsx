@@ -226,7 +226,7 @@ const MindSet = () => {
               high-quality life so that i can built high-quality products. I try
               to learn more, and stay humble about what i know. Because as some
               of you already know, we have no idea about what we do not know. So
-              much things is waiting to be learnt. <br />
+              much things are waiting to be learnt. <br />
               <br />
               Here is my website, hope you enjoy. <br />
               Keep Scrolling.

@@ -124,11 +124,12 @@ const Card = styled.div`
   margin: 10px;
   box-shadow: 0 0 10px 2px lightgray;
   animation: ${ShakingAnimation} 10s linear infinite;
+  opacity: ${(props) => (props.inViewCard ? "1" : "0")};
   animation-delay: ${(props) => props.delay * 3}s;
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
   cursor: pointer;
-  transition: 0.2s all;
+  transition: 0.5s all;
   &:hover {
     box-shadow: 0 0 20px 4px gray;
   }
@@ -243,6 +244,9 @@ const GridTitle = styled.div`
   color: ${(props) => props.backgroundColor};
   background-color: ${(props) => props.color};
   padding: 2px 5px 2px 5px;
+  @media (max-width: 650px) {
+    font-size: 12px;
+  }
 `;
 
 const DateContainer = styled.div`
@@ -480,28 +484,22 @@ const Experience = () => {
             )}
           </SubContainer>{" "}
           <CardContainer ref={refCard}>
-            {ExperineceData.companies.map(
-              (company, idx) =>
-                inViewCard && (
-                  <Card
-                    backgroundColor={company.backgroundColor}
-                    color={company.color}
-                    delay={idx}
-                    onClick={() =>
-                      handleClick(
-                        company,
-                        company.color,
-                        company.backgroundColor
-                      )
-                    }
-                  >
-                    <Logo src={company.logo} />
-                    <CompanyName>{company.name}</CompanyName>
-                    <Role>{company.roles}</Role>
-                    <Myname>EMIR BALKAN</Myname>
-                  </Card>
-                )
-            )}
+            {ExperineceData.companies.map((company, idx) => (
+              <Card
+                inViewCard={inViewCard}
+                backgroundColor={company.backgroundColor}
+                color={company.color}
+                delay={idx}
+                onClick={() =>
+                  handleClick(company, company.color, company.backgroundColor)
+                }
+              >
+                <Logo src={company.logo} />
+                <CompanyName>{company.name}</CompanyName>
+                <Role>{company.roles}</Role>
+                <Myname>EMIR BALKAN</Myname>
+              </Card>
+            ))}
           </CardContainer>
         </>
       )}
