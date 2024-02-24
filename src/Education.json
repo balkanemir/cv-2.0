@@ -3,6 +3,7 @@
     {
       "name": "Sabancı University",
       "logo": "./images/sabancı.png",
+      "background": "./images/sabancı-background.jpeg",
       "location": "Istanbul, Turkey",
       "color": "white",
       "backgroundColor": "#004288",
@@ -33,6 +34,7 @@
     {
       "name": "Sungkyunkwan University",
       "logo": "./images/sungkyunkwan.png",
+      "background": "./images/sungkyunkwan-background.webp",
       "location": "South Korea, Seoul",
       "color": "white",
       "backgroundColor": "#81BD21",

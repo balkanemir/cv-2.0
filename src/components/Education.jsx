@@ -133,7 +133,7 @@ const Card = styled.div`
   background-color: ${(props) => (props.isHovered ? props.bgColor : "white")};
   transition: 1s all;
   display: flex;
-  box-shadow: 0 0 5px 1px lightgray;
+  overflow: hidden;
 `;
 
 const CardContent = styled.div`
@@ -303,6 +303,21 @@ const Dot = styled.div`
   background-color: ${(props) => (props.bgColor ? "gray" : "lightgray")};
 `;
 
+const Background = styled.img`
+  width: auto;
+  height: 100%;
+  position: absolute;
+  z-index: -2;
+`;
+
+const Overlay = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #00000082;
+  z-index: -1;
+`;
+
 const Education = () => {
   const [isHovered, setIsHovered] = useState(null);
   const [slideIndex, setSlideIndex] = useState(0);
@@ -441,6 +456,8 @@ const Education = () => {
                 {isHovered !== idx && (
                   <CardContent isHovered={isHovered === idx}>
                     <Logo src={item.logo} />
+                    <Background src={item.background} />
+                    <Overlay></Overlay>
                   </CardContent>
                 )}
                 {isHovered === idx && (

@@ -119,8 +119,8 @@ const CardContainer = styled.div`
 `;
 
 const Card = styled.div`
-  width: 350px;
-  height: 200px;
+  width: 450px;
+  height: 300px;
   margin: 10px;
   box-shadow: 0 0 10px 2px lightgray;
   animation: ${ShakingAnimation} 10s linear infinite;
@@ -132,6 +132,10 @@ const Card = styled.div`
   transition: 0.5s all;
   &:hover {
     box-shadow: 0 0 20px 4px gray;
+  }
+  @media (max-width: 1050px) {
+    width: 350px;
+    height: 200px;
   }
 `;
 
@@ -148,11 +152,14 @@ const CompanyName = styled.div`
   height: auto;
   position: absolute;
   top: 40px;
-  left: 100px;
+  left: 120px;
   color: ${(props) => props.color};
   font-size: 16px;
   font-family: "Montserrat";
   font-weight: 700;
+  @media (max-width: 1050px) {
+    left: 90px;
+  }
 `;
 
 const Myname = styled.div`
@@ -171,10 +178,10 @@ const Role = styled.div`
   width: 50%;
   height: auto;
   position: absolute;
-  bottom: 40px;
+  bottom: 50px;
   left: 20px;
   color: ${(props) => props.color};
-  font-size: 10px;
+  font-size: 14px;
   font-family: "Montserrat";
   font-weight: 700;
 `;
