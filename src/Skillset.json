@@ -19,12 +19,12 @@
       {
         "src": "./images/html.png",
         "name": "HTML",
-        "description": "Everytime."
+        "description": "I have strong foundation in HTML."
       },
       {
         "src": "./images/css4.png",
         "name": "CSS",
-        "description": "Of course."
+        "description": "I am enjoying while writing CSS."
       },
       {
         "src": "./images/js.png",
@@ -48,7 +48,7 @@
       {
         "src": "./images/vue.png",
         "name": "VueJS",
-        "description": "Options api and composition api. Vue is my best friend. Don't tell to React."
+        "description": "I love Vue JS, as I have experience in both Options and Composition API."
       },
       {
         "src": "./images/jquery.png",
@@ -58,12 +58,12 @@
       {
         "src": "./images/bootstrap.png",
         "name": "Bootstrap",
-        "description": "Don't recommend, but i have to know as frontend developer."
+        "description": "I am using it only for icons."
       },
       {
         "src": "./images/flask3.png",
         "name": "Flask",
-        "description": "1 year work experience."
+        "description": "I have 1 year work experience, and many projects."
       },
       {
         "src": "./images/flutter.png",
@@ -77,22 +77,17 @@
       {
         "src": "./images/vscode.webp",
         "name": "VSCode",
-        "description": "I do not use anything else if vscode is there."
+        "description": "My favourite IDE."
       },
       {
         "src": "./images/xcode.webp",
         "name": "Xcode",
-        "description": "As a mac user, I used it a lot to write C++ specifically."
+        "description": "As a Mac user, I used Xcode a lot to write C++ specifically."
       },
       {
         "src": "./images/git.png",
         "name": "Git",
-        "description": "I have 1 year experince in my job. i can say 7 out of 10."
-      },
-      {
-        "src": "./images/atom.png",
-        "name": "Atom",
-        "description": "My old friend."
+        "description": "I am using git in my every project, as i have used in my previous jobs as well. So important."
       },
       {
         "src": "./images/postman.png",
@@ -102,22 +97,17 @@
       {
         "src": "./images/docker.png",
         "name": "Docker",
-        "description": "Put me in a little bit in trouble when i am learning, and still."
-      },
-      {
-        "src": "./images/mysql.png",
-        "name": "MySql",
-        "description": "I used it for my personal projects. But I am not a fan."
+        "description": "Docker is so useful so I am using it in every opportunity."
       },
       {
         "src": "./images/postgres.png",
         "name": "Postgresql",
-        "description": "I used it in my work a lot. I will just say, the best."
+        "description": "I used it in my work a lot. My favourite DBMS."
       },
       {
         "src": "./images/mongodb2.png",
         "name": "MongoDB",
-        "description": "Easy, practical, fast. Love it."
+        "description": "I use MongoDB for low level projects. It is practical and easy."
       }
     ]
   },

@@ -16,6 +16,7 @@ const Container = styled.div`
   padding: 0 5px 0 5px;
   box-sizing: border-box;
   backdrop-filter: blur(10px);
+  transition: 0.5s all;
 `;
 
 const SubContainer = styled.div`
@@ -47,22 +48,40 @@ const Button = styled.button`
 
 const Navbar = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [prevScrollY, setPrevScrollY] = useState(0);
+  const [isHidden, setIsHidden] = useState(false);
   const themeColors = useSelector((state) => state.theme.themeColors).split(
     ","
   );
 
   const handleScroll = () => {
-    setScrollY(window.scrollY);
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > prevScrollY) {
+      setIsHidden(true);
+    } else if (currentScrollY < prevScrollY) {
+      setIsHidden(false);
+    }
+
+    setPrevScrollY(currentScrollY);
+    setScrollY(currentScrollY);
   };
+  console.log(isHidden);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+    // eslint-disable-next-line
   }, []);
   return (
-    <Container style={{ opacity: `calc(0 + ${scrollY / 1000})` }}>
+    <Container
+      style={{
+        opacity: `calc(0 + ${scrollY / 1000})`,
+        transform: isHidden ? `translateY(-100px)` : "translateY(0)",
+      }}
+    >
       <SubContainer>
         <Button themeColor={themeColors[6]}>About/Mindset</Button>
         <Button themeColor={themeColors[6]}>Skillset</Button>
